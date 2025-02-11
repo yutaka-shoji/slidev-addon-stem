@@ -6,5 +6,3 @@ dist
 .remote-assets
 .idea/
 components.d.ts
-
-pnpm-lock.yaml
