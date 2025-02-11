@@ -1,0 +1,49 @@
+{
+  "name": "slidev-addon-stem",
+  "version": "0.0.1",
+  "description": "Slidev addon for plotly figure rendering and etc.",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "slidev-addon",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev example.md --open",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@slidev/types": "^51.1.0",
+    "@types/plotly.js-dist-min": "^2.3.4",
+    "plotly.js-dist-min": "^3.0.0"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^51.1.0",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.50.1",
+    "prettier": "^3.5.0",
+    "prettier-plugin-slidev": "^1.0.5"
+  },
+  "prettier": {
+    "overrides": [
+      {
+        "files": [
+          "example.md",
+          "pages/*.md"
+        ],
+        "options": {
+          "parser": "slidev",
+          "plugins": [
+            "prettier-plugin-slidev"
+          ]
+        }
+      }
+    ]
+  },
+  "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d"
+}
