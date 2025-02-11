@@ -4,6 +4,8 @@ A Slidev addon that provides components for embedding interactive Plotly figures
 
 ## Demo
 
+https://yutaka-shoji.github.io/slidev-addon-stem/
+
 ![PlotlyFigure](./assets/2.png)
 
 ## Installation

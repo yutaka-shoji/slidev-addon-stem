@@ -15,7 +15,8 @@
     "build": "slidev build example.md",
     "dev": "slidev example.md --open",
     "export": "slidev export example.md",
-    "screenshot": "slidev export example.md --format png"
+    "screenshot": "slidev export example.md --format png",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@slidev/types": "^51.1.0",
