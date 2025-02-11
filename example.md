@@ -17,7 +17,7 @@ You can embed interactive Plotly figures in your slides!
 
 ```markdown
 <PlotlyFigure
-  src="/figure.json"
+  src="figure.json"
   caption="Figure N: Figure Caption."
   width="100%"
   height="320px"
@@ -29,7 +29,7 @@ You can embed interactive Plotly figures in your slides!
 <div>
 
 <PlotlyFigure
-  src="/figure.json"
+  src="figure.json"
   caption="Figure N: Figure Caption."
   width="100%"
   height="320px"
@@ -50,7 +50,7 @@ Embed png/jpg with captions.
 
 ```markdown
 <ImageFigure
-  src="/figure.png"
+  src="figure.png"
   caption="Figure N: Figure Caption."
   width="100%"
   height="200px"
@@ -61,7 +61,7 @@ Embed png/jpg with captions.
 <div>
 
 <ImageFigure
-  src="/figure.png"
+  src="figure.png"
   caption="Figure N: Figure Caption."
   width="100%"
   height="200px"
