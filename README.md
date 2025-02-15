@@ -35,7 +35,7 @@ Embed interactive Plotly figures in your slides.
 - `src`: Path to the Plotly figure JSON file (required)
 - `caption`: Figure caption text (required)
 - `width`: Figure width (optional, default: "100%")
-- `height`: Figure height (optional, default: "100%")
+- `height`: Figure height (optional, default: "360px")
 - `fontSize`: Font size for the figure (optional, number)
 
 ### ImageFigure Component
