@@ -17,7 +17,7 @@ const resizeObserver = ref<ResizeObserver | null>(null);
 // set container style
 const containerStyle = computed(() => ({
   width: props.width || "100%",
-  height: props.height || "100%",
+  height: props.height || "360px",
 }));
 
 // get current font family
@@ -126,11 +126,13 @@ onMounted(initPlot);
 </script>
 
 <template>
-  <div
-    class="grid grid-rows-[auto_40px] justify-content-center justify-items-center overflow-hidden"
-  >
-    <div ref="plotDiv" :style="containerStyle"></div>
-    <div v-if="caption" class="text-xs">
+  <div class="w-full">
+    <div
+      class="mx-auto"
+      :style="[containerStyle, { margin: '0 auto' }]"
+      ref="plotDiv"
+    ></div>
+    <div v-if="caption" class="text-xs text-center mt-2">
       {{ caption }}
     </div>
   </div>
