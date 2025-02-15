@@ -19,8 +19,35 @@ You can embed interactive Plotly figures in your slides!
 <PlotlyFigure
   src="figure.json"
   caption="Figure N: Figure Caption."
-  width="100%"
-  height="320px"
+/>
+```
+
+</div>
+<div>
+
+<PlotlyFigure
+  src="figure.json"
+  caption="Figure N: Figure Caption."
+/>
+
+</div>
+</div>
+
+---
+
+# Component: `PlotlyFigure`
+
+You can specify the width, height, and font size of the figure.
+
+<div grid="~ cols-2 gap-4">
+<div>
+
+```markdown
+<PlotlyFigure
+  src="figure.json"
+  caption="Figure N: Figure Caption."
+  width="300px"
+  height="200px"
   :fontSize="10"
 />
 ```
@@ -31,8 +58,8 @@ You can embed interactive Plotly figures in your slides!
 <PlotlyFigure
   src="figure.json"
   caption="Figure N: Figure Caption."
-  width="100%"
-  height="320px"
+  width="300px"
+  height="200px"
   :fontSize="10"
 />
 
