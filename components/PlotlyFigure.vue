@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref, computed, onBeforeUnmount } from "vue";
-import Plotly from "plotly.js-dist-min";
+import * as Plotly from "plotly.js-dist-min";
 
 const props = defineProps<{
   src: string;
