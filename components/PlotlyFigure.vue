@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref, computed, onBeforeUnmount } from "vue";
-import Plotly from "plotly.js-dist-min";
+import * as Plotly from "plotly.js-dist-min";
 
 const props = defineProps<{
   src: string;
@@ -82,12 +82,25 @@ const updatePlotSize = () => {
 // initialize plot
 const initPlot = async () => {
   try {
+    console.log("Plotly object:", {
+      object: Plotly,
+      hasNewPlot: typeof Plotly.newPlot === "function",
+      properties: Object.keys(Plotly),
+      prototype: Object.getPrototypeOf(Plotly),
+    });
+
     const container = plotDiv.value;
     if (!container) return;
 
     const response = await fetch(props.src);
     const data = await response.json();
     figure.value = updatePlotConfig(data, container);
+
+    console.log("Before newPlot call:", {
+      container,
+      data: figure.value.data,
+      layout: figure.value.layout,
+    });
 
     await Plotly.newPlot(container, figure.value.data, figure.value.layout, {
       responsive: true,
