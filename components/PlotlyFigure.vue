@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref, computed, onBeforeUnmount } from "vue";
-import { newPlot, react } from "plotly.js-dist-min";
+import Plotly from "plotly.js-dist-min";
 
 const props = defineProps<{
   src: string;
@@ -71,7 +71,7 @@ const updatePlotSize = () => {
   const updatedFigure = updatePlotConfig(figure.value, container);
 
   try {
-    react(container, updatedFigure.data, updatedFigure.layout, {
+    Plotly.react(container, updatedFigure.data, updatedFigure.layout, {
       responsive: true,
     });
   } catch (error) {
@@ -89,7 +89,7 @@ const initPlot = async () => {
     const data = await response.json();
     figure.value = updatePlotConfig(data, container);
 
-    await newPlot(container, figure.value.data, figure.value.layout, {
+    await Plotly.newPlot(container, figure.value.data, figure.value.layout, {
       responsive: true,
     });
 
@@ -109,7 +109,7 @@ watch(() => props.src, initPlot);
 watch([() => props.fontSize], () => {
   if (figure.value && plotDiv.value) {
     const updatedFigure = updatePlotConfig(figure.value, plotDiv.value);
-    react(plotDiv.value, updatedFigure.data, updatedFigure.layout, {
+    Plotly.react(plotDiv.value, updatedFigure.data, updatedFigure.layout, {
       responsive: true,
     });
   }
