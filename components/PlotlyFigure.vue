@@ -7,6 +7,7 @@ const props = defineProps<{
   width?: string;
   height?: string;
   fontSize?: number;
+  displayModeBar?: boolean;
 }>();
 
 const plotDiv = ref<HTMLElement>();
@@ -73,6 +74,7 @@ const updatePlotSize = () => {
     // @ts-ignore
     window.Plotly.react(container, updatedFigure.data, updatedFigure.layout, {
       responsive: true,
+      displayModeBar: props.displayModeBar ?? false,
     });
   } catch (error) {
     console.error("Error updating plot size:", error);
@@ -114,6 +116,7 @@ const initPlot = async () => {
       figure.value.layout,
       {
         responsive: true,
+        displayModeBar: props.displayModeBar ?? false,
       },
     );
 
@@ -140,6 +143,7 @@ watch([() => props.fontSize], () => {
       updatedFigure.layout,
       {
         responsive: true,
+        displayModeBar: props.displayModeBar ?? false,
       },
     );
   }

@@ -6,12 +6,19 @@ A Slidev addon that provides components for embedding interactive Plotly figures
 
 https://yutaka-shoji.github.io/slidev-addon-stem/
 
-![PlotlyFigure](./assets/2.png)
+![PlotlyFigure](https://github.com/yutaka-shoji/slidev-addon-stem/blob/main/assets/2.png?raw=true)
 
 ## Installation
 
 ```bash
 pnpm install slidev-addon-stem
+```
+
+```markdown
+---
+addons:
+  - stem
+---
 ```
 
 ## Features
@@ -37,6 +44,7 @@ Embed interactive Plotly figures in your slides.
 - `width`: Figure width (optional, default: "100%")
 - `height`: Figure height (optional, default: "360px")
 - `fontSize`: Font size for the figure (optional, number)
+- `displayModeBar`: Display mode bar (optional, boolean, default: `false`)
 
 ### ImageFigure Component
 
