@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, watch, ref, computed, onBeforeUnmount } from "vue";
-import * as Plotly from "plotly.js-dist-min";
 
 const props = defineProps<{
   src: string;
@@ -71,7 +70,8 @@ const updatePlotSize = () => {
   const updatedFigure = updatePlotConfig(figure.value, container);
 
   try {
-    Plotly.react(container, updatedFigure.data, updatedFigure.layout, {
+    // @ts-ignore
+    window.Plotly.react(container, updatedFigure.data, updatedFigure.layout, {
       responsive: true,
     });
   } catch (error) {
@@ -82,11 +82,16 @@ const updatePlotSize = () => {
 // initialize plot
 const initPlot = async () => {
   try {
+    // wait for Plotly to be globally loaded
+    if (typeof window.Plotly === "undefined") {
+      // load Plotly
+      await import("plotly.js-dist-min");
+    }
+
     console.log("Plotly object:", {
-      object: Plotly,
-      hasNewPlot: typeof Plotly.newPlot === "function",
-      properties: Object.keys(Plotly),
-      prototype: Object.getPrototypeOf(Plotly),
+      object: window.Plotly,
+      hasNewPlot: typeof window.Plotly.newPlot === "function",
+      properties: Object.keys(window.Plotly),
     });
 
     const container = plotDiv.value;
@@ -102,9 +107,15 @@ const initPlot = async () => {
       layout: figure.value.layout,
     });
 
-    await Plotly.newPlot(container, figure.value.data, figure.value.layout, {
-      responsive: true,
-    });
+    // @ts-ignore
+    await window.Plotly.newPlot(
+      container,
+      figure.value.data,
+      figure.value.layout,
+      {
+        responsive: true,
+      },
+    );
 
     // observe resize
     if (resizeObserver.value) {
@@ -122,9 +133,15 @@ watch(() => props.src, initPlot);
 watch([() => props.fontSize], () => {
   if (figure.value && plotDiv.value) {
     const updatedFigure = updatePlotConfig(figure.value, plotDiv.value);
-    Plotly.react(plotDiv.value, updatedFigure.data, updatedFigure.layout, {
-      responsive: true,
-    });
+    // @ts-ignore
+    window.Plotly.react(
+      plotDiv.value,
+      updatedFigure.data,
+      updatedFigure.layout,
+      {
+        responsive: true,
+      },
+    );
   }
 });
 
